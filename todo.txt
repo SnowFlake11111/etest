@@ -1,5 +1,26 @@
-1. Create English Question object: {id, question, answer, description, difficulty, category}
-2. Read input data from a file: input.dat
-3. Load input data to a list of English Question Object
-4. Sort above object by difficulty
-5. Display on the screen
+Next Lesson
+0. Homework: Read some common linux commands:
+- ifconfig, netstat -tnlp, ls, mkdir, cd, chmod, chown, echo,
+- grep, ack
+- Run a simple HTTP server by python command: https://viblo.asia/p/huong-dan-tao-mot-http-server-bang-python-gGJ59orDZX2
+1. Learn vim and tmux
+2.1 Create java dev environment
+2.2 Create English Question Object in java
+2.3 Build and Run
+3.1 Create an English object in main function and display its data on screen
+id: 1
+question: "what is the box??"
+answer: "a"
+description: "cau hoi what"
+difficulty: 1
+category: "wh question"
+
+3.2 Create a text file with 1000 lines, with format:
+question,answer,description,difficulty,category
+eg:
+what is the box?,a,cau hoi what,1,wh question
+what is the box?,a,cau hoi what,3,wh question
+what is the box?,a,cau hoi what,2,wh question
+...
+
+output: question.txt

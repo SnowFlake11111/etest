@@ -1,0 +1,6 @@
+English Test problem by Java
+1. Create English Question object: {id: int, question: string, answer: string, description: string, difficulty: int, category: string}
+2. Read input data from a file: input.dat
+3. Load input data to a List of English Question Object
+4. Sort above objects by difficulty
+5. Display on the screen
