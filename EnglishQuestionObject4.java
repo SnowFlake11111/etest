@@ -8,6 +8,7 @@ class QuestionData
      String description;
      String difficulty;
      String category;
+     String command = "";
 
          public QuestionData() {
          }
@@ -56,15 +57,11 @@ class QuestionData
 public class EnglishQuestionObject4
 {
 
-  public static void main(String[] args)
+  public static void main(String[] args) throws IOException
   {
     BufferedReader br = new BufferedReader(new FileReader(new File("/home/kagura/code/hvalab/etest/question.csv")));
         List<QuestionData> questionDataList = new ArrayList<QuestionData>();
         String line = br.readLine();
-        //check file for error
-        if (line == null) throw new IllegalArgumentException("File is empty");
-        if (!line.equals("question,answer,description,difficulty,category")) throw new IllegalArgumentException("File has wrong collumns: " +line);
-        while ((line = br.readLine()) != null) {
           //split on comma
           String[] questionDataCsv = line.split(",");
 
@@ -80,7 +77,30 @@ public class EnglishQuestionObject4
 
           //add objects to list
           questionDataList.add(questionDataObj);
+
+    Scanner command = new Scanner(System.in);
+
+    int i=0;
+
+      while (i<1) {
+
+        switch(command.nextLine()) {
+
+          case "print":
+            System.out.print(questionDataList);
+            i = i++;
+            break;
+
+          case "exit":
+            System.out.printf("Program closed");
+            i = i++;
+            break;
+
+          default:
+            System.out.printf("Command not recognized, program shutting down");
+            i = i++;
+            break;
         }
+      }
   }
 }
-
