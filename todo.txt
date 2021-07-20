@@ -24,3 +24,14 @@ what is the box?,a,cau hoi what,2,wh question
 ...
 
 output: question.txt
+------- 15/7 -------
+3.3 Load 1000 lines to 1000 EnglishQuestionObjects
+3.4 Sort 1000 EnglishQuestionObjects by difficulty
+3.5 Print 1000 EnglishQuestionObjects to screen
+
+------- 17/7 -------
+4.1 Read Java Phuong Lan chuong 3
+quan trong cai CLASSPATH: giai thich cho chu cai CLASSPATH la gi?
+4.2 Read Java Phuong Lan chuong 8
+Hieu cach doc va ghi file
+

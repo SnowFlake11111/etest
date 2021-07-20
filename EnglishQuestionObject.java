@@ -1,3 +1,28 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Sortbydifficulty implements Comparator<EnglishQuestionObject>
+{
+  // Used for sorting in ascending order of
+  // difficulty number
+  public int compare(EnglishQuestionObject a, EnglishQuestionObject b) {
+    if (a == null && b == null) {
+      return 0;
+    }
+
+    if (a == null) {
+      return 1;
+    }
+
+    if (b == null) {
+      return -1;
+    }
+
+    return a.GetDifficulty() - b.GetDifficulty();
+  }
+}
+
 public class EnglishQuestionObject {
   private int id;
   private String question;
@@ -18,6 +43,10 @@ public class EnglishQuestionObject {
     category = _category;
   }
 
+  public int GetDifficulty() {
+    return difficulty;
+  }
+
   public void PrintOnScreen() {
     System.out.printf("id: %d\n", id);
     System.out.printf("question: %s\n", question);
@@ -29,23 +58,35 @@ public class EnglishQuestionObject {
   }
 
   public static void main(String[] args) {
-    EnglishQuestionObject object = new EnglishQuestionObject(
-      "what is the box?",
-      "a",
-      "cau hoi what",
-      1,
-      "wh question"
-    );
+    try {
+      EnglishQuestionObject[] questions = EnglishQuestionObject.LoadDataFromCsv();
+      Arrays.sort(questions, new Sortbydifficulty());
+      for (EnglishQuestionObject q : questions) {
+        if (q == null) {
+          break;
+        }
+        q.PrintOnScreen();
+      }
+    } catch(IOException e) {
+      e.printStackTrace();
+    }
+  }
 
-    EnglishQuestionObject object2 = new EnglishQuestionObject(
-      "what is the book?",
-      "b",
-      "cau hoi what",
-      1,
-      "wh question"
-    );
-
-    object.PrintOnScreen();
-    object2.PrintOnScreen();
+  public static EnglishQuestionObject[] LoadDataFromCsv() throws IOException {
+    File file = new File("question.csv");
+    FileReader fr=new FileReader(file);
+    BufferedReader br=new BufferedReader(fr);
+    StringBuffer sb=new StringBuffer();
+    String line;
+    EnglishQuestionObject[] questions = new EnglishQuestionObject[1000];
+    int i = 0;
+    while((line=br.readLine())!=null) {
+      String[] ss = line.split(",");
+      int d = Integer.parseInt(ss[3]);
+      questions[i] = new EnglishQuestionObject(ss[0], ss[1], ss[2], d, ss[4]);
+      i++;
+    }
+    fr.close();
+    return questions;
   }
 }
